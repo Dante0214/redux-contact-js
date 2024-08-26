@@ -20,7 +20,13 @@ const ContactForm = () => {
           alignItems: "center",
         }}
       >
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 1 }}
+          autoComplete="off"
+        >
           <TextField
             margin="normal"
             required
@@ -39,6 +45,7 @@ const ContactForm = () => {
             name="phonenumber"
             label="전화번호"
             id="phonenumber"
+            type="number"
           />
 
           <Button

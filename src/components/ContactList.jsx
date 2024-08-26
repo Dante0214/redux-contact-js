@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import SearchBox from "./SearchBox";
-import { Grid } from "@mui/material";
+import { Box, Container, Grid, useMediaQuery } from "@mui/material";
 import ContactItem from "./ContactItem";
 import { useSelector } from "react-redux";
 
 const ContactList = () => {
+  const isMobile = useMediaQuery("(max-width:600px)");
   const { contactList, searchName } = useSelector((state) => state);
   const [filteredList, setFilteredList] = useState([]);
   useEffect(() => {
@@ -19,17 +20,19 @@ const ContactList = () => {
     }
   }, [searchName, contactList]);
   return (
-    <Grid container direction="column">
-      <Grid item sx={{ width: "50%" }}>
-        <SearchBox />
+    <Container maxWidth={isMobile ? "xs" : "xl"}>
+      <Grid container direction="column" justifyContent="center">
+        <Grid item sx={{ width: isMobile ? "80%" : "50%" }}>
+          <SearchBox />
+        </Grid>
+        <Grid item>
+          <p>{filteredList.length}명</p>
+          {filteredList.map((item, index) => (
+            <ContactItem item={item} key={index} />
+          ))}
+        </Grid>
       </Grid>
-      <Grid item>
-        <p>{filteredList.length}명</p>
-        {filteredList.map((item, index) => (
-          <ContactItem item={item} key={index} />
-        ))}
-      </Grid>
-    </Grid>
+    </Container>
   );
 };
 
