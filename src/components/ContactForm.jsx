@@ -45,7 +45,6 @@ const ContactForm = () => {
             name="phonenumber"
             label="전화번호"
             id="phonenumber"
-            type="number"
           />
 
           <Button
