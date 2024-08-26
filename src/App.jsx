@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//1. 왼쪽 연락처 추가 오른쪽 연락처 리스트 및 검색
+//2. 리스트에 이름과 번호 추가
+//3. 리스트에 연락처 갯수 표시
 
+import { Container, CssBaseline, Grid, Typography } from "@mui/material";
+import ContactForm from "./components/ContactForm";
+import ContactList from "./components/ContactList";
+
+//4. 이름으로 검색 가능
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <CssBaseline />
+      <Typography variant="h1" Align="center" gutterBottom>
+        Contact List
+      </Typography>
+
+      <Container>
+        <Grid container alignItems="center" justifyContent="center">
+          <Grid item md={4}>
+            <ContactForm />
+          </Grid>
+          <Grid item md={8}>
+            <ContactList />
+          </Grid>
+        </Grid>
+      </Container>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
