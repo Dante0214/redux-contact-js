@@ -10,13 +10,13 @@ import ContactList from "./components/ContactList";
 function App() {
   return (
     <>
-      <CssBaseline />
-      <Typography variant="h1" Align="center" gutterBottom>
-        Contact List
-      </Typography>
-
       <Container>
-        <Grid container alignItems="center" justifyContent="center">
+        <CssBaseline />
+        <Typography variant="h1" align="center" gutterBottom>
+          Contact List
+        </Typography>
+
+        <Grid container>
           <Grid item md={4}>
             <ContactForm />
           </Grid>

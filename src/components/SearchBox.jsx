@@ -1,21 +1,21 @@
 import { Box, Button, Grid, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const SearchBox = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const [searchName, setSearchName] = useState("");
+  const dispatch = useDispatch();
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch({ type: "SEARCH_NAME", payload: { searchName } });
   };
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate>
-      <Grid container alignItems="center" spacing={2}>
+    <Box component="form" onSubmit={handleSearch} noValidate sx={{ mt: 1 }}>
+      <Grid container alignItems="flex-start" spacing={2}>
         <Grid item xs={10}>
           <TextField
             margin="normal"
+            onChange={(e) => setSearchName(e.target.value)}
             required
             fullWidth
             id="name"
@@ -29,7 +29,7 @@ const SearchBox = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ height: "56px", mt: 2 }}
           >
             검색
           </Button>
